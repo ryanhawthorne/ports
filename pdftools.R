@@ -33,11 +33,10 @@ y2018m01 <- y2018m01 %>%
   select(-c(2:5))
 
 y2018m01 <- y2018m01 %>%
-mutate(
+  mutate(
   cargo_type = ifelse(grepl("^[A-Z]+( [A-Z]+)+(:+)*$", col1), col1, 
                       ifelse(grepl("^[A-Z]+(:+)*$", col1), col1,
-                             NA))
-) %>%
+                             NA))) %>%
   select(cargo_type,col1:col71) %>%
   fill(cargo_type, .direction = "down") 
 
