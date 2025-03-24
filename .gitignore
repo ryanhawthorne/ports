@@ -3,4 +3,5 @@
 .RData
 .Ruserdata
 desktop.ini
-*.R
+*.pdf
+*.rds
