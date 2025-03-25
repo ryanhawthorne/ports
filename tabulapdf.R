@@ -644,4 +644,5 @@ named_tibbles <- lapply(cleaned_tibbles, standardize_names)
 # Combine tibbles into one tibble
 combined_tibble <- bind_rows(named_tibbles)
 
-
+# export to csv
+write.csv(combined_tibble, "transnet_vessels.csv")
