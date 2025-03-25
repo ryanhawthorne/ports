@@ -151,7 +151,6 @@ extracted_data21Nov <- list("202111" = table)
 # 2021 Dec
 
 #f <- paste0(pdf_dir,"202112.pdf")
-#locate_areas(f)
 
 #76.73395  44.55703 327.89725 623.69922 
 
@@ -187,8 +186,6 @@ for (pdf in pdf_files21JunDec) {
 
 # 2022 Jan
 f <- paste0(pdf_dir,"202201.pdf")
-# locate_areas(f)
-
 table <-  extract_tables(f,
                                        area = list(c( 66.02221,27.11440,347.58751,774.28600 )),
                                        guess = FALSE)
@@ -196,8 +193,6 @@ extracted_data22Jan <- list("202201" = table)
 
 # 2022 Mar (no feb)
 f <- paste0(pdf_dir,"202203.pdf")
-# locate_areas(f)
-
 table <-  extract_tables(f,
                                        area = list(c(96.95403,18.59502,399.14842,816.26864)),
                                        guess = FALSE)
@@ -223,7 +218,7 @@ extracted_data22May <- list("202205" = table)
 
 #2022 June-Aug
 # first check size
-f <- paste0(pdf_dir,"202206.pdf")
+# f <- paste0(pdf_dir,"202206.pdf")
 # locate_areas(f)
 
 # Get a list of all PDF files in the directory for 2022
@@ -267,7 +262,7 @@ extracted_data22Aug <- list("202208" = table)
 
 # 2022 Sep - Feb 2023
 # Get a list of all PDF files in the directory for 2022
-pdf_files22Sep23Jan <- list.files(pdf_dir, pattern = "(2022(0[9]|1[0-2])|20230[1-2])\\.pdf", 
+pdf_files22Sep23Jan <- list.files(pdf_dir, pattern = "(2022(0[9]|1[0-2])|202301)\\.pdf", 
                                 full.names = TRUE)
 
 # Initialize an empty list to store extracted tables
@@ -304,16 +299,18 @@ for (pdf in pdf_files22Sep23Jan) {
 
 f <- paste0(pdf_dir,"202302.pdf")
 table <-  extract_tables(f,
-                                       area = list(c(51.61967,11.63999,355.35737,807.65694)),
+                                       area = list(c(  51.87369,  12.44494, 326.40001, 816.09365)),
                                        guess = FALSE)
 
 extracted_data23Feb <- list("202302" = table)
 
+
 #202303 100.09180  15.42303 405.40327 816.16879 
 
 f <- paste0(pdf_dir,"202303.pdf")
+#locate_areas(f)
 table <- extract_tables(f,
-                                       area = list(c(100.09180,15.42303,405.40327,816.16879)),
+                                       area = list(c( 97.010530,5.031835,369.852646,820.474137)),
                                        guess = FALSE)
 extracted_data23Mar <- list("202303" = table)
 
@@ -336,8 +333,11 @@ extracted_data23May <- list("202305" = table)
 # 202306  88.57446  51.06979 275.51555 532.53927 
 f <- paste0(pdf_dir,"202306.pdf")
 table <-  extract_tables(f,
-                                       area = list(c(88.57446,  51.06979, 275.51555, 532.53927)),
+                                       area = list(c( 92.40856,  51.25007, 251.98004, 530.13151 )),
                                        guess = FALSE)
+table[[1]] <- table[[1]] |>
+  rename("...1" = "OCEAN GOING:")
+
 extracted_data23Jun <- list("202306" = table)
 
 # 202307  88.57446  15.40538 313.34886 583.80685
@@ -433,21 +433,21 @@ extracted_data24May <- list("202405" = table)
 # 202406 86.34898  48.84076 277.74104 528.08122 
 f <- paste0(pdf_dir,"202406.pdf")
 table <-  extract_tables(f,
-                                       area = list(c(86.34898,  48.84076, 277.74104, 528.08122)),
+                                       area = list(c( 123.1295, 50.5082, 234.6287, 526.7351)),
                                        guess = FALSE)
 extracted_data24Jun <- list("202406" = table)
 
-# 202407  88.57446  13.17636 317.79984 581.57782 
+# 202407  88.57446  13.17636 317.79984 581.57782 PROBLEM
 f <- paste0(pdf_dir,"202407.pdf")
 table <-  extract_tables(f,
-                                       area = list(c(88.57446,  13.17636, 317.79984, 581.57782)),
+                                       area = list(c( 133.74848,  13.33063, 264.71580, 583.38668)),
                                        guess = FALSE)
 extracted_data24Jul <- list("202407" = table)
 
-# 202408  35.16273  13.17636 264.38810 586.03587 
+# 202408  35.16273  13.17636 264.38810 586.03587 PROBLEM
 f <- paste0(pdf_dir,"202408.pdf")
 table <-  extract_tables(f,
-                                       area = list(c(35.16273,  13.17636, 264.38810, 586.03587)),
+                                       area = list(c( 77.11396,  11.56027, 208.08128, 583.38668)),
                                        guess = FALSE)
 extracted_data24Aug <- list("202408" = table)
 
@@ -511,15 +511,15 @@ extracted_data <- c(extracted_data1819, extracted_data20JanFeb, extracted_data20
                     extracted_data21Apr, extracted_data21May, extracted_data21JunDec,
                     extracted_data21Nov, extracted_data22Jan, 
                     extracted_data22Mar, extracted_data22Apr, extracted_data22May, 
-                    extracted_data22JunJul, extracted_data22Aug, extracted_data22Sep23Jan, 
+                    extracted_data22JunJul,  
                     extracted_data23Feb, extracted_data23Mar, extracted_data23Apr, 
-                    extracted_data23May, extracted_data23Jun, extracted_data23Jul, 
-                    extracted_data23Aug, extracted_data23Sep, extracted_data23Oct, 
-                    extracted_data23Nov24Jan, extracted_data24Feb, extracted_data24Mar, 
-                    extracted_data24Apr, extracted_data24May, extracted_data24Jun, 
-                    extracted_data24Jul, extracted_data24Aug, extracted_data24SepDec, 
+                    extracted_data23May, extracted_data23Jul, 
+                    extracted_data23Oct, 
+                     extracted_data24Feb, extracted_data24Mar, 
+                    extracted_data24Apr, extracted_data24May, extracted_data24SepDec, 
                     extracted_data25Jan, extracted_data25Feb)
-
+# extracted_data23Jun, extracted_data24Jun, extracted_data24Jul, extracted_data24Aug, 
+# more than 22 col? extracted_data23Aug, extracted_data23Sep,extracted_data23Nov24Jan, extracted_data22Aug, extracted_data22Sep23Jan,
 saveRDS(extracted_data, "extracted_data.rds")
 
 # table tibbles out of list
@@ -572,6 +572,8 @@ cargo_type <- function(tibble) {
   }
 
 # Apply cargo_type to each sublist
+lapply(extracted_tibbles, dim)
+
 cargo_tibbles <- lapply(extracted_tibbles, cargo_type)
 
 
@@ -583,7 +585,6 @@ clean_tibble <- function(tibble) {
     mutate(across(4:last_col() & where(is.character), ~str_trim(.))) %>%
     mutate(across(4:last_col(), as.numeric)) %>%
     select(where(~!all(is.na(.) | . == "" | str_trim(.) == "")))
-  mutate
 }
 
 # Apply clean_tibble to each sublist
@@ -592,7 +593,6 @@ cleaned_tibbles <- lapply(cargo_tibbles, clean_tibble)
 # check
 
 lapply(cleaned_tibbles,dim)
-View(cleaned_tibbles[[54]])
 
 # function to move data in 3rd column to fourth column when fourth column is empty and tibble has more than 21 columns
 extra_col <- function(tbl) {
@@ -625,13 +625,17 @@ extra_col <- function(tbl) {
 # Apply extra_col to each sublist
 extra_col_tibbles <- lapply(cleaned_tibbles, extra_col)
 
+# check
+
+lapply(extra_col_tibbles,dim)
+
+
 # Function to standardize column names
 standardize_names <- function(tibble) {
   tibble %>%
-    setNames(c("CARGO", "RB_NO", "RB_GT", "DBN_NO", "DBN_GT", 
+    setNames(c("CARGO_TYPE", "MONTHYEAR","CARGO_DETAIL", "RB_NO", "RB_GT", "DBN_NO", "DBN_GT", 
                "EL_NO", "EL_GT", "NGQ_NO", "NGQ_GT", "PE_NO", "PE_GT", 
-               "MB_NO", "MB_GT", "CPT_NO", "CPT_GT", "SB_NO", "SB_GT", "TOT_NO", "TOT_GT",
-               "monyear")) 
+               "MB_NO", "MB_GT", "CPT_NO", "CPT_GT", "SB_NO", "SB_GT", "TOT_NO", "TOT_GT")) 
 }
 
 
@@ -641,5 +645,3 @@ named_tibbles <- lapply(cleaned_tibbles, standardize_names)
 combined_tibble <- bind_rows(named_tibbles)
 
 
-# Combine all standardized tibbles
-combined_df <- bind_rows(standardized_list)
